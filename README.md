@@ -1,2 +1,2 @@
-# gerdle
+# Gerdle
 German Wordle
