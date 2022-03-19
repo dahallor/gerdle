@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     let letters = document.querySelectorAll('.keyboard-row button');
     let guessedWords = [[]];
-    let spaceIndex = 1;
+    let spaceIndex = 0;
 
     for(let i = 0; i < letters.length; i++){
         letters[i].onclick = ({ target }) => {
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if(currentWord && currentWord.length < 27){
             currentWord.push(letter);
-            const spaceIndexElement = document.getElementById(String(1));
+            const spaceIndexElement = document.getElementById(String(0));
             spaceIndex = spaceIndex + 1;
 
             spaceIndexElement.textContent = letter;
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         for(let index = 0; index < 162; index++){
             let square = document.createElement("div");
             square.classList.add("square");
-            square.setAttribute("id", index + 1);
+            square.setAttribute("id", index);
             gameBoard.appendChild(square);
         }
     }
