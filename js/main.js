@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let guessedWords = [[]];
     let guessedWordCount = 0;
     let spaceIndex = 1;
-    let word = "aaaaaaaaaaaaaaaaaaaaaaaaaaa";
+    let word = "aaabaaaaaaaaaaaaaaaaaaaaaaa";
 
 
     function getCurrentWord(){
@@ -36,6 +36,25 @@ document.addEventListener("DOMContentLoaded", () => {
             gameBoard.appendChild(square);
         }
     }
+    function getTileColor(letter, index){
+        const isLetterInWord = word.includes(letter);
+        const letterPosition = word.charAt(index);
+        const isCorrectPosition = (letter === letterPosition);
+
+        if (!isLetterInWord){
+            //returns black
+            return "rgb(40, 40, 40)";
+        }
+
+        if(isCorrectPosition){
+            //returns red
+            return "rgb(218, 41, 28)";
+        }
+        //returns yellow
+        return "rgb(255, 205, 0)";
+
+    }
+
     function handleEnteredWord(){
         const currentWord = getCurrentWord();
         const timeInterval = 150;
@@ -49,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
         //Animate Submission
         currentWord.forEach((letter, index) => {
             setTimeout(() => {
-                const tileColor = "rgb(60, 60, 60)";
+                const tileColor = getTileColor(letter, index);
                 const letterId = firstLetterId + index;
                 const letterElement = document.getElementById(letterId);
                 letterElement.classList.add("animate__flipInX");
