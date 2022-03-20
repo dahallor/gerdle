@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         //Errors
         if(currentWord.length !== 27){
             window.alert("Must be 27 characters");
+            return;
         }
 
 
