@@ -24,6 +24,10 @@ class Handles {
 
             }, timeInterval * index);
         });
+        for(let i = 0; i < 30; i++){
+            let value = squares.charArray[i];
+            squares.tally[value] = 0;
+        }
 
         words.guessedWordCount += 1;
 

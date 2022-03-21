@@ -6,25 +6,21 @@ document.addEventListener("DOMContentLoaded", () => {
     
     var letters = document.querySelectorAll('.keyboard-row button');
 
-
+    squares.setCharArray(words);
 
 
 
 
     for(let i = 0; i < letters.length; i++){
-        letters[i].onclick = ({ target }) => {
-            handles.handleInput(target, words, squares);
-        }
-        /*
-        letters[i].onkeypress = ({ target }) => {
-            handleInput(target);
-        }*/
+        letters.addEventListener("click", () => {
+            handles.handleInput(letters[i], words, squares);
+        })
+        letters.removeEventLister();
+        letters.addEventListener("keydown", () => {
+            handles.handleInput(letters[i], words, squares);
+        })
+        letters.removeEventLister()
 
     }
 
 })
-
-
-
-
-

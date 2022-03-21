@@ -1,7 +1,74 @@
 
 class Squares {
     constructor(){
+        this.total = {
+        a:0,
+        b:0,
+        c:0,
+        d:0,
+        e:0,
+        f:0,
+        g:0,
+        h:0,
+        i:0,
+        j:0,
+        k:0,
+        l:0,
+        m:0,
+        n:0,
+        o:0,
+        p:0,
+        q:0,
+        r:0,
+        s:0,
+        t:0,
+        u:0,
+        v:0,
+        w:0,
+        x:0,
+        y:0,
+        z:0,
+        ä:0,
+        ö:0,
+        ü:0,
+        ß:0
+    };
 
+    this.tally = {
+        a:0,
+        b:0,
+        c:0,
+        d:0,
+        e:0,
+        f:0,
+        g:0,
+        h:0,
+        i:0,
+        j:0,
+        k:0,
+        l:0,
+        m:0,
+        n:0,
+        o:0,
+        p:0,
+        q:0,
+        r:0,
+        s:0,
+        t:0,
+        u:0,
+        v:0,
+        w:0,
+        x:0,
+        y:0,
+        z:0,
+        ä:0,
+        ö:0,
+        ü:0,
+        ß:0
+
+    };
+    this.charArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", 
+    "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "ä", "ö", "ü", "ß"]
     }
     
     createSquares() {
@@ -19,6 +86,7 @@ class Squares {
         const isLetterInWord = words.solution.includes(letter);
         const letterPosition = words.solution.charAt(index);
         const isCorrectPosition = (letter === letterPosition);
+        this.tally[letter] += 1
 
         if (!isLetterInWord){
             //returns black
@@ -30,7 +98,18 @@ class Squares {
             return "rgb(218, 41, 28)";
         }
         if(isLetterInWord && !isCorrectPosition){
+            if (this.tally[letter] > this.total[letter]){
+                return "rgb(40, 40, 40)";
+            }
             return "rgb(255, 205, 0)";
+        }
+
+    }
+
+    setCharArray(words){
+        for(let i = 0; i < words.solution.length; i++){
+            let value = words.solution[i];
+            this.total[value] += 1;
         }
 
     }
