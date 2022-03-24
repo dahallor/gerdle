@@ -6,11 +6,18 @@ class Handles {
 
     handleEnteredWord(words, squares){
         const currentWord = words.getCurrentWord();
-        const timeInterval = 150;
+        const timeInterval = 50;
         const firstLetterId = words.guessedWordCount * 27 + 1;
+        const currentWordString = currentWord.join('');
         //Errors
+        console.log(currentWord)
+
         if(currentWord.length !== 27){
             window.alert("Must be 27 characters");
+            return;
+        }
+        if(!words.wordBank.includes(currentWordString)){
+            window.alert("Word Not In Word List")
             return;
         }
         //Animate Submission
@@ -34,11 +41,12 @@ class Handles {
 
         words.guessedWordCount += 1;
 
-        const currentWordString = currentWord.join('');
+
         if (currentWordString === words.solution){
             window.alert("Wunderbar!");
             throw "stop execution";
         }
+
         if(words.guessedWords.length === 6){
             window.alert(`Gesundheit. Das Wort war ${words.solution}`);
             throw "stop execution";
