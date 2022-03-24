@@ -14,6 +14,11 @@ class Handles {
             return;
         }
         //Animate Submission
+        /*
+        currentWord.forEach((letter) => {
+            squares.setTally(letter);
+        });*/
+        console.log(squares.tally)
         currentWord.forEach((letter, index) => {
             setTimeout(() => {
                 const tileColor = squares.getTileColor(letter, index, words);
@@ -24,10 +29,8 @@ class Handles {
 
             }, timeInterval * index);
         });
-        for(let i = 0; i < 30; i++){
-            let value = squares.charArray[i];
-            squares.tally[value] = 0;
-        }
+        squares.resetTally();
+
 
         words.guessedWordCount += 1;
 

@@ -82,30 +82,48 @@ class Squares {
             gameBoard.appendChild(square);
         }
     }
+    setTally(letter){
+        this.tally[letter] += 1
+        console.log(letter)
+    }
+    
+
     getTileColor(letter, index, words){
+        
         const isLetterInWord = words.solution.includes(letter);
         const letterPosition = words.solution.charAt(index);
         const isCorrectPosition = (letter === letterPosition);
-        this.tally[letter] += 1
+
+
 
         if (!isLetterInWord){
             //returns black
             return "rgb(40, 40, 40)";
         }
-
-        if(isCorrectPosition){
-            //returns red
-            return "rgb(218, 41, 28)";
-        }
-        if(isLetterInWord && !isCorrectPosition){
-            if (this.tally[letter] > this.total[letter]){
+        if(isLetterInWord){
+            this.tally[letter] += 1;
+            if(this.tally[letter] > this.total[letter]){
                 return "rgb(40, 40, 40)";
             }
-            return "rgb(255, 205, 0)";
+            if(this.tally[letter] <= this.total[letter]){
+                if(isCorrectPosition){
+                    //returns red
+
+                    return "rgb(218, 41, 28)";
+                }
+                if(!isCorrectPosition){
+                    return "rgb(255, 205, 0)";
+                }
+            }
         }
 
     }
-
+    resetTally(){
+        for(let i = 0; i < 30; i++){
+            let value = this.charArray[i];
+            this.tally[value] = 0;
+        }
+    }
     setCharArray(words){
         for(let i = 0; i < words.solution.length; i++){
             let value = words.solution[i];

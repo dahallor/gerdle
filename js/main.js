@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var handles = new Handles();
     var words = new Words();
     var squares = new Squares();
+    words.setSolution();
     squares.createSquares();
     
     var letters = document.querySelectorAll('.keyboard-row button');
@@ -14,20 +15,21 @@ document.addEventListener("DOMContentLoaded", () => {
     
 
     squares.setCharArray(words);
-
+    /*
     function sendLetter(letter, words, squares, handles){
         handles.handleInput(letter, words, squares)
-    }
+    }*/
 
 
-    for(let i = 0; i < letters.length; i++){/*
+    for(let i = 0; i < letters.length; i++){
         letters[i].onclick = ({ target }) => {
             handles.handleInput(target, words, squares);
-        }*/
+        }
+        /*
         letters[i].onkeypress = ({ target }) => {
             console.log(letters[i])
             handles.handleInput(target, words, squares);
-        }
+        }*/
     }
     
 
