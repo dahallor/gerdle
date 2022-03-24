@@ -16,10 +16,18 @@ class Handles {
             window.alert("Must be 27 characters");
             return;
         }
+        /*
+        Uncomment this part when finished debugging. Checks to make sure input is a real word
+
+
         if(!words.wordBank.includes(currentWordString)){
             window.alert("Word Not In Word List")
             return;
         }
+        */
+
+
+
         //Animate Submission
         squares.resetStates();
         squares.setColorStates(currentWord, words);
