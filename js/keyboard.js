@@ -4,6 +4,7 @@ class Keyboard{
         this.gray = "rgb(40, 40, 40)";
         this.yellow = "rgb(255, 205, 0)";
         this.red = "rgb(218, 41, 28)";
+        //this.letterElement = document.getAttribute("data-key");
         this.keyboardStates = {
             a:this.gray,
             b:this.gray,
@@ -40,6 +41,8 @@ class Keyboard{
 
     updateKeyboardStatesRed(letter){
         this.keyboardStates[letter] = this.red;
+        //const keyboardKey = letter.getAttribute("data-key");
+        console.log(letter)
     }
 
     updateKeyboardStatesYellow(letter){
@@ -51,7 +54,15 @@ class Keyboard{
         }
     }
     updateKeyboardStatesBlack(letter){
-        this.keyboardStates[letter] = this.black
+        if(this.keyboardStates[letter] === this.red){
+            return;
+        }
+        if(this.keyboardStates[letter] === this.yellow){
+            return;
+        }
+        else{
+            this.keyboardStates[letter] = this.black;
+        }
 
     }
     addKeypresses(letters){

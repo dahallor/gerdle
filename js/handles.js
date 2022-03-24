@@ -10,7 +10,6 @@ class Handles {
         const firstLetterId = words.guessedWordCount * 27 + 1;
         const currentWordString = currentWord.join('');
         //Errors
-        console.log(currentWord)
 
         if(currentWord.length !== 27){
             window.alert("Must be 27 characters");

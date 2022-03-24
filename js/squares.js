@@ -107,14 +107,10 @@ class Squares {
                 this.tally[letter] += 1;
                 if(this.tally[letter] <= this.total[letter]){
                     this.states[index] = this.yellow;
-                    keys.updateKeyboardStatesYellow(letter);
-                }
-                else{
-                    keys.updateKeyboardStatesBlack(letter);
+                    keys.updateKeyboardStatesYellow(letter)
                 }
             }
         });
-        console.log(keys.keyboardStates)
 
     }
     
