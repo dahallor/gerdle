@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var handles = new Handles();
     var words = new Words();
     var squares = new Squares();
+    var keys = new Keyboard();
     words.setSolution();
     squares.createSquares();
     
@@ -23,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     for(let i = 0; i < letters.length; i++){
         letters[i].onclick = ({ target }) => {
-            handles.handleInput(target, words, squares);
+            handles.handleInput(target, words, squares, keys);
         }
         /*
         letters[i].onkeypress = ({ target }) => {

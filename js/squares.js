@@ -1,6 +1,7 @@
 
 class Squares {
     constructor(){
+        this.black = "rgb(0, 0, 0)";
         this.gray = "rgb(40, 40, 40)";
         this.yellow = "rgb(255, 205, 0)";
         this.red = "rgb(218, 41, 28)";
@@ -88,7 +89,7 @@ class Squares {
         }
     }
 
-    setColorStates(currentWord, words){
+    setColorStates(currentWord, words, keys){
         //assigns red values first
         currentWord.forEach((letter, index) => {
             const letterPosition = words.solution.charAt(index);
@@ -96,6 +97,7 @@ class Squares {
             if(isCorrectPosition){
                 this.tally[letter] += 1;
                 this.states[index] = this.red;
+                keys.updateKeyboardStatesRed(letter)
             }
         });
         //distribute remainder
@@ -105,9 +107,14 @@ class Squares {
                 this.tally[letter] += 1;
                 if(this.tally[letter] <= this.total[letter]){
                     this.states[index] = this.yellow;
+                    keys.updateKeyboardStatesYellow(letter);
+                }
+                else{
+                    keys.updateKeyboardStatesBlack(letter);
                 }
             }
         });
+        console.log(keys.keyboardStates)
 
     }
     

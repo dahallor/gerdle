@@ -4,7 +4,7 @@ class Handles {
 
     }
 
-    handleEnteredWord(words, squares){
+    handleEnteredWord(words, squares, keys){
         const currentWord = words.getCurrentWord();
         const timeInterval = 50;
         const firstLetterId = words.guessedWordCount * 27 + 1;
@@ -30,7 +30,7 @@ class Handles {
 
         //Animate Submission
         squares.resetStates();
-        squares.setColorStates(currentWord, words);
+        squares.setColorStates(currentWord, words, keys);
 
         for(let index = 0; index < 27; index++){
             setTimeout(() => {
@@ -72,11 +72,11 @@ class Handles {
 
 
     }
-    handleInput(target, words, squares){
+    handleInput(target, words, squares, keys){
         const letter = target.getAttribute("data-key");
 
         if(letter === 'enter'){
-            this.handleEnteredWord(words, squares);
+            this.handleEnteredWord(words, squares, keys);
             return;
         }
         if(letter === 'del'){
