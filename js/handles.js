@@ -14,22 +14,22 @@ class Handles {
             return;
         }
         //Animate Submission
-        /*
-        currentWord.forEach((letter) => {
-            squares.setTally(letter);
-        });*/
-        console.log(squares.tally)
-        currentWord.forEach((letter, index) => {
+        squares.resetStates();
+        squares.setColorStates(currentWord, words);
+
+        for(let index = 0; index < 27; index++){
             setTimeout(() => {
-                const tileColor = squares.getTileColor(letter, index, words);
+                const tileColor = squares.getTileColor(index);
                 const letterId = firstLetterId + index;
                 const letterElement = document.getElementById(letterId);
                 letterElement.classList.add("animate__flipInX");
                 letterElement.style = `background-color:${tileColor};boarder-color:${tileColor}`;
 
             }, timeInterval * index);
-        });
+        };
+
         squares.resetTally();
+        
 
 
         words.guessedWordCount += 1;

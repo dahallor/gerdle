@@ -1,6 +1,11 @@
 
 class Squares {
     constructor(){
+        this.gray = "rgb(40, 40, 40)";
+        this.yellow = "rgb(255, 205, 0)";
+        this.red = "rgb(218, 41, 28)";
+        this.states = [this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray]
+
         this.total = {
         a:0,
         b:0,
@@ -82,53 +87,53 @@ class Squares {
             gameBoard.appendChild(square);
         }
     }
-    setTally(letter){
-        this.tally[letter] += 1
-        console.log(letter)
+
+    setColorStates(currentWord, words){
+        //assigns red values first
+        currentWord.forEach((letter, index) => {
+            const letterPosition = words.solution.charAt(index);
+            const isCorrectPosition = (letter === letterPosition);
+            if(isCorrectPosition){
+                this.tally[letter] += 1;
+                this.states[index] = this.red;
+            }
+        });
+        //distribute remainder
+        currentWord.forEach((letter, index) => {
+            const isLetterInWord = words.solution.includes(letter);
+            if(isLetterInWord){
+                this.tally[letter] += 1;
+                if(this.tally[letter] <= this.total[letter]){
+                    this.states[index] = this.yellow;
+                }
+            }
+        });
+
     }
     
 
-    getTileColor(letter, index, words){
-        
-        const isLetterInWord = words.solution.includes(letter);
-        const letterPosition = words.solution.charAt(index);
-        const isCorrectPosition = (letter === letterPosition);
-
-
-
-        if (!isLetterInWord){
-            //returns black
-            return "rgb(40, 40, 40)";
-        }
-        if(isLetterInWord){
-            this.tally[letter] += 1;
-            if(this.tally[letter] > this.total[letter]){
-                return "rgb(40, 40, 40)";
-            }
-            if(this.tally[letter] <= this.total[letter]){
-                if(isCorrectPosition){
-                    //returns red
-
-                    return "rgb(218, 41, 28)";
-                }
-                if(!isCorrectPosition){
-                    return "rgb(255, 205, 0)";
-                }
-            }
-        }
-
+    getTileColor(index){
+        let color = this.states[index];
+        return color;
     }
+
     resetTally(){
         for(let i = 0; i < 30; i++){
             let value = this.charArray[i];
             this.tally[value] = 0;
         }
     }
+
+    resetStates(){
+        for(let i = 0; i < 27; i++){
+            this.states[i] = this.gray;
+        }
+    }
+
     setCharArray(words){
         for(let i = 0; i < words.solution.length; i++){
             let value = words.solution[i];
             this.total[value] += 1;
         }
-
     }
 }
