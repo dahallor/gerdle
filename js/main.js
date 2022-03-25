@@ -27,8 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
             handles.handleInputKeypress(e.key, words, squares, keys);
         })
         letters[i].addEventListener("click", e => {
-            //console.log(e)
-            handles.handleInputClick(e.target, words, squares, keys);
+            if(e.detail === 1){
+                handles.handleInputClick(e.target, words, squares, keys);
+            }
         })
 
     }
