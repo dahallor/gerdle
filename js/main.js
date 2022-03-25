@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-    var handles = new Handles();
     var words = new Words();
+    var handles = new Handles(words);
     var squares = new Squares();
     var keys = new Keyboard();
 
@@ -27,8 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
             handles.handleInputKeypress(e.key, words, squares, keys);
         })
         letters[i].addEventListener("click", e => {
-            console.log("clicked")
-            console.log(e)
+            //console.log(e)
             handles.handleInputClick(e.target, words, squares, keys);
         })
 

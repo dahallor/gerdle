@@ -1,7 +1,8 @@
 
 class Handles {
     constructor(){
-
+        //this.checkpoints = [1, 28, 55, 82, 109, 136]
+        
     }
 
     handleEnteredWord(words, squares, keys){
@@ -62,12 +63,18 @@ class Handles {
     }
 
     handleDeletedLetter(words){
+        let index = words.guessedWordCount
+        if(words.guessedWords[index].length === 0){
+            return;
+        }
         const currentWord = words.getCurrentWord();
         const removedLetter = currentWord.pop();
         const lastLetterElement = document.getElementById(String(words.spaceIndex - 1));
+
         words.guessedWords[words.guessedWords.length - 1] = currentWord;
         lastLetterElement.textContent = '';
         words.spaceIndex = words.spaceIndex - 1;
+
 
 
     }
