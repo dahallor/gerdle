@@ -44,8 +44,6 @@ class Keyboard{
 
     updateKeyboardStatesRed(letter){
         this.keyboardStates[letter] = this.red;
-        //const keyboardKey = letter.getAttribute("data-key");
-        console.log(letter)
     }
 
     updateKeyboardStatesYellow(letter){

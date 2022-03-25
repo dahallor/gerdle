@@ -3,38 +3,36 @@ document.addEventListener("DOMContentLoaded", () => {
     var words = new Words();
     var squares = new Squares();
     var keys = new Keyboard();
+
     words.setSolution();
     squares.createSquares();
-    
-    var letters = document.querySelectorAll('.keyboard-row button');
-    /*
-    var keys = document.getElementById("keyboard-container")
-
-    keys.addEventListener("keypress", e => {
-        handles.handleInput(e.key, words, squares)
-    })*/
-    
-
     squares.setCharArray(words);
-    /*
-    function sendLetter(letter, words, squares, handles){
-        handles.handleInput(letter, words, squares)
+
+/*
+    for(let i = 0; i < 30; i++){
+        var letter = document.getElementById(squares.charArray[i]);
+        letter.addEventListener("click", handles.handleInput);
+        letter.addEventListener("keypress", handles.handleInput);
+    }
+
+    function sendInput(event, handles, words, squares, keys){
+        console.log('here')
+        handles.handleInput(event.target, words, squares, keys)
     }*/
 
+    var letters = document.querySelectorAll('.keyboard-row');
 
     for(let i = 0; i < letters.length; i++){
-        letters[i].onclick = ({ target }) => {
-            handles.handleInput(target, words, squares, keys);
-        }
-        /*
-        letters[i].onkeypress = ({ target }) => {
-            console.log(letters[i])
-            handles.handleInput(target, words, squares);
-        }*/
+        letters[i].addEventListener("keydown", e => {
+            handles.handleInputKeypress(e.key, words, squares, keys);
+        })
+        letters[i].addEventListener("click", e => {
+            console.log("clicked")
+            console.log(e)
+            handles.handleInputClick(e.target, words, squares, keys);
+        })
+
     }
-    
-
 
     
-
 })

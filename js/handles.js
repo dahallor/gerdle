@@ -48,7 +48,7 @@ class Handles {
 
         words.guessedWordCount += 1;
 
-
+        //Endgame Messages
         if (currentWordString === words.solution){
             window.alert("Wunderbar!");
             throw "stop execution";
@@ -71,7 +71,7 @@ class Handles {
 
 
     }
-    handleInput(target, words, squares, keys){
+    handleInputClick(target, words, squares, keys){
         const letter = target.getAttribute("data-key");
 
         if(letter === 'enter'){
@@ -84,5 +84,24 @@ class Handles {
         }
 
         words.updateGuessedWord(letter);
+    }
+
+    handleInputKeypress(key, words, squares, keys){
+
+        if(key === 'Enter'){
+            this.handleEnteredWord(words, squares, keys);
+            return;
+        }
+        if(key === 'Delete' || key === 'Backspace'){
+            this.handleDeletedLetter(words);
+            return;
+        }
+        let lower_letter = key.toLowerCase();
+        let test = squares.charArray.includes(lower_letter);
+        if(test === false){
+            return;
+        }
+
+        words.updateGuessedWord(key);
     }
 }
