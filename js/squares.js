@@ -102,21 +102,27 @@ class Squares {
         });
         //distribute remainder
         currentWord.forEach((letter, index) => {
+            const letterPosition = words.solution.charAt(index);
+            const isCorrectPosition = (letter === letterPosition);
             const isLetterInWord = words.solution.includes(letter);
-            if(isLetterInWord){
+            if(isLetterInWord && !isCorrectPosition){
                 this.tally[letter] += 1;
                 if(this.tally[letter] <= this.total[letter]){
                     this.states[index] = this.yellow;
                     keys.updateKeyboardStatesYellow(letter)
                 }
             }
+            if(!isLetterInWord){
+                keys.updateKeyboardStatesBlack(letter)
+            }
         });
-
+        keys.updateKeyboard();
     }
     
 
     getTileColor(index){
         let color = this.states[index];
+        
         return color;
     }
 

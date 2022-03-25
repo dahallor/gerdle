@@ -1,7 +1,8 @@
 class Keyboard{
     constructor(){
-        this.black = "rgb(0, 0, 0)";
-        this.gray = "rgb(40, 40, 40)";
+        this.black = "rgb(10, 10, 10)";
+        this.gray = "rgb(129, 131, 132)";
+        this.white = "rgb(255, 25, 255)";
         this.yellow = "rgb(255, 205, 0)";
         this.red = "rgb(218, 41, 28)";
         //this.letterElement = document.getAttribute("data-key");
@@ -37,6 +38,8 @@ class Keyboard{
             ü:this.gray,
             ß:this.gray
         };
+        this.charArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", 
+        "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "ä", "ö", "ü", "ß"]
     }
 
     updateKeyboardStatesRed(letter){
@@ -65,13 +68,19 @@ class Keyboard{
         }
 
     }
-    addKeypresses(letters){
-    
-        
-        /*["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", 
-    "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "ä", "ö", "ü", "ß"]*/
+    updateKeyboard(){
+        for(let i = 0; i < 30; i++){
+            let letter = this.charArray[i];
+            let color = this.keyboardStates[letter];
+            let element = document.getElementById(letter);
+            element.style = `background-color:${color};`;
+            /*
+            if(color === this.black){
+                element.style = `border:${1};`;
+            }
+            */
+            
+        }
     }
-
-
 
 }
