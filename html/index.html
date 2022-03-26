@@ -10,6 +10,7 @@
     <script src="../js/words.js" defer></script>
     <script src="../js/squares.js" defer></script>
     <script src="../js/keyboard.js" defer></script>
+    <script src="../js/modal.js" defer></script>
     <script src="https://kit.fontawesome.com/032ee0c4ec.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/styles.css"/>
     <link
@@ -20,14 +21,6 @@
 </head>
 <body>
   <div id="container">
-    <div class = "modal">
-      <div class = "modal__inner">
-        <div class="modal__top">
-          <i class="fa-solid fa-xmark"></i>
-        </div>
-        <div class = "modal__content">Sample</div>
-      </div>
-    </div>
     <div id = "game">
         <header>
             <span>
@@ -84,6 +77,14 @@
             <button id = "del" data-key="del" class="wide-button">Del</button>
           </div>
         </div>
+    </div>
+    <div class = "modal" id = "modal">
+      <div class = "modal__inner" id = "modal__inner">
+        <div class="modal__top" id = "modal__top">
+          <i class="fa-solid fa-xmark" id = "close-x"></i>
+        </div>
+        <div class = "modal__content" id = "modal__content">Sample</div>
+      </div>
     </div>
   </div>
 </body>
