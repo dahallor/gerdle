@@ -45,23 +45,26 @@ header {
     justify-content: center;
     align-items: center;
     flex-grow: 1;
-    overflow: hidden;
+    overflow: auto;
     opacity: 1;
     z-index: 1;
 }
 
 #board{
     display: grid;
+    justify-content: center;
+    align-items: center;
     grid-template-columns: repeat(27, 1fr);
     grid-gap: 5px;
     padding: 10px;
     box-sizing: border-box;
 }
 
+
 .square {
     border: 2px solid rgb(58, 58, 60);
-    min-width: 30px;
-    min-height: 30px;
+    width: 30px;
+    height: 30px;
     font-size: 2rem;
     font-weight: bold;
     color: gainsboro;
@@ -146,7 +149,8 @@ header {
   background: rgba(217, 217, 214, 0);
   width: 100%;
   max-width: 800px;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: auto;
   border-radius: 4px;
   z-index: 0
 
@@ -164,6 +168,13 @@ header {
 
 .modal__content{
   padding: 0 var(--gap);
+  overflow-y: auto;
+  max-width: 800px;
+  max-height: 700px;
 
+}
+
+.word-ul{
+  
 }
 
