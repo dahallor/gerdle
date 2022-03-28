@@ -19,6 +19,7 @@ class Modals{
         *Note: some browsers seem to have issues with typing. If this happens try selecting a key by mouse click and then start typing*</p>`
         this.statsText = "Stats Section Coming Soon!";
         this.dictText = words.wordBank;
+        this.settingText = `<ul><li>Unlimited Mode</li><li>Traditional Mode (Coming Soon)</li></ul>`
     }
 
 

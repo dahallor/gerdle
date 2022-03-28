@@ -1,11 +1,10 @@
 
 class Handles {
     constructor(){
-        //this.checkpoints = [1, 28, 55, 82, 109, 136]
         
     }
 
-    handleEnteredWord(words, squares, keys){
+    handleEnteredWord(words, squares, keys, states, color){
         const currentWord = words.getCurrentWord();
         const timeInterval = 50;
         const firstLetterId = words.guessedWordCount * 27 + 1;
@@ -29,12 +28,12 @@ class Handles {
 
 
         //Animate Submission
-        squares.resetStates();
-        squares.setColorStates(currentWord, words, keys);
+        squares.resetStates(states, color);
+        squares.setColorStates(currentWord, words, keys, states, color);
 
         for(let index = 0; index < 27; index++){
             setTimeout(() => {
-                const tileColor = squares.getTileColor(index);
+                const tileColor = squares.getTileColor(index, states);
                 const letterId = firstLetterId + index;
                 const letterElement = document.getElementById(letterId);
                 letterElement.classList.add("animate__flipInX");
@@ -43,19 +42,20 @@ class Handles {
             }, timeInterval * index);
         };
 
-        squares.resetTally();
-        
-
-
+        squares.resetTally(words);
+        states.setGuesses(words)
         words.guessedWordCount += 1;
+        localStorage.setItem('game progress', "in progress")
 
         //Endgame Messages
         if (currentWordString === words.solution){
+            localStorage.setItem('game progress', "win")
             window.alert("Wunderbar!");
             throw "stop execution";
         }
 
         if(words.guessedWords.length === 6){
+            localStorage.setItem('game progress', "lose")
             window.alert(`Gesundheit. Das Wort war ${words.solution}`);
             throw "stop execution";
         }
@@ -78,11 +78,11 @@ class Handles {
 
 
     }
-    handleInputClick(target, words, squares, keys){
+    handleInputClick(target, words, squares, keys, states, colors){
         const letter = target.getAttribute("data-key");
 
         if(letter === 'enter'){
-            this.handleEnteredWord(words, squares, keys);
+            this.handleEnteredWord(words, squares, keys, states, colors);
             return;
         }
         if(letter === 'del'){
@@ -93,10 +93,10 @@ class Handles {
         words.updateGuessedWord(letter);
     }
 
-    handleInputKeypress(key, words, squares, keys){
-
+    handleInputKeypress(key, words, squares, keys, states, colors){
+        console.log("handle function"), key
         if(key === 'Enter'){
-            this.handleEnteredWord(words, squares, keys);
+            this.handleEnteredWord(words, squares, keys, states, colors);
             return;
         }
         if(key === 'Delete' || key === 'Backspace'){
@@ -104,7 +104,7 @@ class Handles {
             return;
         }
         let lower_letter = key.toLowerCase();
-        let test = squares.charArray.includes(lower_letter);
+        let test = words.charArray.includes(lower_letter);
         if(test === false){
             return;
         }

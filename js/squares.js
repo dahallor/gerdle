@@ -1,12 +1,6 @@
 
 class Squares {
     constructor(){
-        this.black = "rgb(0, 0, 0)";
-        this.gray = "rgb(40, 40, 40)";
-        this.yellow = "rgb(255, 205, 0)";
-        this.red = "rgb(218, 41, 28)";
-        this.states = [this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray, this.gray]
-
         this.total = {
         a:0,
         b:0,
@@ -71,11 +65,9 @@ class Squares {
         ö:0,
         ü:0,
         ß:0
-
-    };
-    this.charArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", 
-    "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "ä", "ö", "ü", "ß"]
+        };
     }
+
     
     createSquares() {
         const gameBoard = document.getElementById("board");
@@ -89,15 +81,15 @@ class Squares {
         }
     }
 
-    setColorStates(currentWord, words, keys){
+    setColorStates(currentWord, words, keys, states, color){
         //assigns red values first
         currentWord.forEach((letter, index) => {
             const letterPosition = words.solution.charAt(index);
             const isCorrectPosition = (letter === letterPosition);
             if(isCorrectPosition){
                 this.tally[letter] += 1;
-                this.states[index] = this.red;
-                keys.updateKeyboardStatesRed(letter)
+                states.gameboardColorStates[index] = color.red;
+                keys.updateKeyboardStatesRed(letter, states, color)
             }
         });
         //distribute remainder
@@ -108,34 +100,35 @@ class Squares {
             if(isLetterInWord && !isCorrectPosition){
                 this.tally[letter] += 1;
                 if(this.tally[letter] <= this.total[letter]){
-                    this.states[index] = this.yellow;
-                    keys.updateKeyboardStatesYellow(letter)
+                    states.gameboardColorStates[index] = color.yellow;
+                    keys.updateKeyboardStatesYellow(letter, states, color)
                 }
             }
             if(!isLetterInWord){
-                keys.updateKeyboardStatesBlack(letter)
+                keys.updateKeyboardStatesBlack(letter, states, color)
             }
         });
-        keys.updateKeyboard();
+        keys.updateKeyboard(words, states);
+        localStorage.setItem('gameboard state', states.gameboardColorStates)
     }
     
 
-    getTileColor(index){
-        let color = this.states[index];
-        
+    getTileColor(index, states){
+        let color = states.gameboardColorStates[index];
+
         return color;
     }
 
-    resetTally(){
+    resetTally(words){
         for(let i = 0; i < 30; i++){
-            let value = this.charArray[i];
+            let value = words.charArray[i];
             this.tally[value] = 0;
         }
     }
 
-    resetStates(){
+    resetStates(states, color){
         for(let i = 0; i < 27; i++){
-            this.states[i] = this.gray;
+            states.gameboardColorStates[i] = color.gray;
         }
     }
 
