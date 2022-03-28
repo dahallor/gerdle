@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
             handles.handleInputKeypress(e.key, words, squares, keys);
         })
         letters[i].addEventListener("click", e => {
-            console.log(e)
             if(e.detail >= 1){
                 handles.handleInputClick(e.target, words, squares, keys);
             }

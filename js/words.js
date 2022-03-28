@@ -28,7 +28,15 @@ class Words {
         let solutionIndex = Math.floor(Math.random() * 7063 + 1);
         let temp = this.wordBank[solutionIndex];
         this.solution = temp.toLowerCase();
-        console.log(this.solution)
+
+        localStorage.setItem('index', solutionIndex)
+        localStorage.setItem('solution', this.solution)
+
+        }
+
+
+    getSolution(){
+
     }
 
 }

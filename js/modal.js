@@ -17,7 +17,7 @@ class Modals{
         And that's about it! Go forth and play a gratitously difficult version of Wordle!<br><br>
         
         *Note: some browsers seem to have issues with typing. If this happens try selecting a key by mouse click and then start typing*</p>`
-        this.statsText = "Placeholder";
+        this.statsText = "Stats Section Coming Soon!";
         this.dictText = words.wordBank;
     }
 
