@@ -8,9 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
     var modal = new Modals(words);
     var keys = new Keyboard();
 
-    setInitialLocalStorage(words, squares, keys, states, color);
     squares.createSquares();
+    setInitialLocalStorage(words, squares, keys, states, color);
     squares.setCharArray(words);
+
 
     //set modal event listners
     modal.help.addEventListener("click", () => {
@@ -65,9 +66,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function setInitialLocalStorage(words, squares, keys, states, color){
         if(!localStorage.getItem('game progress') || localStorage.getItem('game progress') === "win" || localStorage.getItem('game progress') === "lose"){
+            localStorage.setItem('refreshed', false)
+            localStorage.setItem('gameboard state all', JSON.stringify(states.gameboardColorStatesAll))
             words.setSolution();
         }
         if(localStorage.getItem('game progress') === 'in progress'){
+            localStorage.setItem('refreshed', true)
             const storedGuesses = localStorage.getItem('guesses')
             const storedGuessesArray = JSON.parse(storedGuesses)
             let count = 0;
@@ -76,12 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     count += 1;
                 }
             }
-            words.spaceIndex = count + 1
-            console.log(words.spaceIndex)
-            console.log(count)
             for(let i = 0; i < count; i++){
                 for(let j = 0; j <= 27; j++){
-                    console.log(storedGuessesArray[i][j])
                     if(j < 27){
                         handles.handleInputKeypress(storedGuessesArray[i][j], words, squares, keys, states, color)
                     }
@@ -93,11 +93,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function getInitialLocalStorage(handles, words){
-        for(let i = 0; i < words.guessWords.length; i++){
-            handles.HandleEnter
-        }
-
-    }
     
 })

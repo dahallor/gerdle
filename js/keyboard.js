@@ -9,6 +9,8 @@ class Keyboard{
     }
 
     updateKeyboardStatesYellow(letter, states, color){
+        console.log("yellow")
+        console.log(letter, states.keyboardStates[letter])
         if(states.keyboardStates[letter] === color.red){
             return;
         }

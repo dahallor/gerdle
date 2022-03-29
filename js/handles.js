@@ -30,17 +30,41 @@ class Handles {
         //Animate Submission
         squares.resetStates(states, color);
         squares.setColorStates(currentWord, words, keys, states, color);
+        if(localStorage.getItem('refreshed') === 'false'){        
+            for(let index = 0; index < 27; index++){
+                setTimeout(() => {
+                    const tileColor = squares.getTileColor(index, states);
+                    const letterId = firstLetterId + index;
+                    const letterElement = document.getElementById(letterId);
+                    letterElement.classList.add("animate__flipInX");
+                    letterElement.style = `background-color:${tileColor};boarder-color:${tileColor}`;
 
-        for(let index = 0; index < 27; index++){
-            setTimeout(() => {
-                const tileColor = squares.getTileColor(index, states);
-                const letterId = firstLetterId + index;
-                const letterElement = document.getElementById(letterId);
-                letterElement.classList.add("animate__flipInX");
-                letterElement.style = `background-color:${tileColor};boarder-color:${tileColor}`;
-
-            }, timeInterval * index);
+                }, timeInterval * index);
+            };
         };
+        if(localStorage.getItem('refreshed') === 'true'){
+            var count = 0;
+            const storedGuessString = localStorage.getItem('guesses')
+            const storedGuessesArray = JSON.parse(storedGuessString)
+            for(let i = 0; i < 6; i++){
+                if(storedGuessesArray[i] !== ""){
+                    count += 1;
+                }
+            }
+            for(let i = 0; i < count; i++){
+                for(let j = 0; j < 27; j++){
+                    setTimeout(() => {
+                        const tileColor = storedGuessesArray[i][j]
+                        const letterId = firstLetterId + j;
+                        const letterElement = document.getElementById(letterId);
+                        letterElement.classList.add("animate__flipInX");
+                        letterElement.style = `background-color:${tileColor};boarder-color:${tileColor}`;
+
+                    }, timeInterval * j);
+                }
+            }
+            localStorage.setItem('refreshed', false)
+        }
 
         squares.resetTally(words);
         states.setGuesses(words)
@@ -74,6 +98,7 @@ class Handles {
         words.guessedWords[words.guessedWords.length - 1] = currentWord;
         lastLetterElement.textContent = '';
         words.spaceIndex = words.spaceIndex - 1;
+        console.log(words.spaceIndex)
 
 
 
@@ -94,7 +119,6 @@ class Handles {
     }
 
     handleInputKeypress(key, words, squares, keys, states, colors){
-        console.log("handle function"), key
         if(key === 'Enter'){
             this.handleEnteredWord(words, squares, keys, states, colors);
             return;

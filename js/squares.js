@@ -82,36 +82,49 @@ class Squares {
     }
 
     setColorStates(currentWord, words, keys, states, color){
-        //assigns red values first
-        currentWord.forEach((letter, index) => {
-            const letterPosition = words.solution.charAt(index);
-            const isCorrectPosition = (letter === letterPosition);
-            if(isCorrectPosition){
-                this.tally[letter] += 1;
-                states.gameboardColorStates[index] = color.red;
-                keys.updateKeyboardStatesRed(letter, states, color)
-            }
-        });
-        //distribute remainder
-        currentWord.forEach((letter, index) => {
-            const letterPosition = words.solution.charAt(index);
-            const isCorrectPosition = (letter === letterPosition);
-            const isLetterInWord = words.solution.includes(letter);
-            if(isLetterInWord && !isCorrectPosition){
-                this.tally[letter] += 1;
-                if(this.tally[letter] <= this.total[letter]){
-                    states.gameboardColorStates[index] = color.yellow;
-                    keys.updateKeyboardStatesYellow(letter, states, color)
+        if(localStorage.getItem('refreshed') === 'false'){
+            //assigns red values first
+            currentWord.forEach((letter, index) => {
+                const letterPosition = words.solution.charAt(index);
+                const isCorrectPosition = (letter === letterPosition);
+                if(isCorrectPosition){
+                    this.tally[letter] += 1;
+                    states.gameboardColorStates[index] = color.red;
+                    keys.updateKeyboardStatesRed(letter, states, color)
+                    
                 }
-            }
-            if(!isLetterInWord){
+            });
+            //distribute remainder
+            currentWord.forEach((letter, index) => {
+                const letterPosition = words.solution.charAt(index);
+                const isCorrectPosition = (letter === letterPosition);
+                const isLetterInWord = words.solution.includes(letter);
+
+                if(isLetterInWord && !isCorrectPosition){
+                    console.log(letter)
+                    console.log(this.tally)
+                    console.log(this.total)
+                    this.tally[letter] += 1;
+                    if(this.tally[letter] <= this.total[letter]){
+                        states.gameboardColorStates[index] = color.yellow;
+                        console.log(states.gameboardColorStates[index])
+                        keys.updateKeyboardStatesYellow(letter, states, color)
+                        
+                    }
+                }
+                if(!isLetterInWord){
+                    
                 keys.updateKeyboardStatesBlack(letter, states, color)
-            }
-        });
-        keys.updateKeyboard(words, states);
-        localStorage.setItem('gameboard state', states.gameboardColorStates)
+                    
+                }
+            });
+            keys.updateKeyboard(words, states);
+            states.setGameboardStatesCurrent();
+            states.setGameboardStatesAll(words.guessedWordCount)
+        }
+
     }
-    
+
 
     getTileColor(index, states){
         let color = states.gameboardColorStates[index];
