@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     squares.setCharArray();
 
 
-
+    //
     //set modal event listners
     modal.help.addEventListener("click", () => {
         modal.outer_modal.style = `background: rgba(0, 0, 0, .5);z-index: 2;`;
