@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     squares.createSquares();
     setInitialLocalStorage(words, squares, keys, states, color);
-    squares.setCharArray(words);
+    squares.setCharArray();
+
 
 
     //set modal event listners
@@ -68,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if(!localStorage.getItem('game progress') || localStorage.getItem('game progress') === "win" || localStorage.getItem('game progress') === "lose"){
             localStorage.setItem('refreshed', false)
             localStorage.setItem('gameboard state all', JSON.stringify(states.gameboardColorStatesAll))
+            localStorage.setItem('keyboard state', JSON.stringify(states.keyboardStates))
             words.setSolution();
         }
         if(localStorage.getItem('game progress') === 'in progress'){
@@ -90,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 }
             }
+            localStorage.setItem('refreshed', false)
         }
     }
 

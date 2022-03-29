@@ -82,46 +82,44 @@ class Squares {
     }
 
     setColorStates(currentWord, words, keys, states, color){
-        if(localStorage.getItem('refreshed') === 'false'){
-            //assigns red values first
-            currentWord.forEach((letter, index) => {
-                const letterPosition = words.solution.charAt(index);
-                const isCorrectPosition = (letter === letterPosition);
-                if(isCorrectPosition){
-                    this.tally[letter] += 1;
-                    states.gameboardColorStates[index] = color.red;
-                    keys.updateKeyboardStatesRed(letter, states, color)
-                    
-                }
-            });
-            //distribute remainder
-            currentWord.forEach((letter, index) => {
-                const letterPosition = words.solution.charAt(index);
-                const isCorrectPosition = (letter === letterPosition);
-                const isLetterInWord = words.solution.includes(letter);
+        //assigns red values first
+        currentWord.forEach((letter, index) => {
+            var solution = localStorage.getItem("solution")
+            const letterPosition = solution.charAt(index);
+            const isCorrectPosition = (letter === letterPosition);
+            if(isCorrectPosition){
 
-                if(isLetterInWord && !isCorrectPosition){
-                    console.log(letter)
-                    console.log(this.tally)
-                    console.log(this.total)
-                    this.tally[letter] += 1;
-                    if(this.tally[letter] <= this.total[letter]){
-                        states.gameboardColorStates[index] = color.yellow;
-                        console.log(states.gameboardColorStates[index])
-                        keys.updateKeyboardStatesYellow(letter, states, color)
-                        
-                    }
-                }
-                if(!isLetterInWord){
+                this.tally[letter] += 1;
+                states.gameboardColorStates[index] = color.red;
+                keys.updateKeyboardStatesRed(letter, states, color)
+                
+            }
+        });
+        //distribute remainder
+        currentWord.forEach((letter, index) => {
+            const letterPosition = words.solution.charAt(index);
+            const isCorrectPosition = (letter === letterPosition);
+            const isLetterInWord = words.solution.includes(letter);
+
+            if(isLetterInWord && !isCorrectPosition){
+                this.tally[letter] += 1;
+                console.log(this.tally[letter])
+                console.log(this.total[letter])
+                if(this.tally[letter] <= this.total[letter]){
+                    states.gameboardColorStates[index] = color.yellow;
+                    keys.updateKeyboardStatesYellow(letter, states, color)
                     
+                }
+            }
+            if(!isLetterInWord){
+                
                 keys.updateKeyboardStatesBlack(letter, states, color)
-                    
-                }
-            });
-            keys.updateKeyboard(words, states);
-            states.setGameboardStatesCurrent();
-            states.setGameboardStatesAll(words.guessedWordCount)
-        }
+                
+            }
+        });
+        keys.updateKeyboard(words, states);
+        states.setGameboardStatesCurrent();
+        states.setGameboardStatesAll(words.guessedWordCount)
 
     }
 
@@ -145,9 +143,10 @@ class Squares {
         }
     }
 
-    setCharArray(words){
-        for(let i = 0; i < words.solution.length; i++){
-            let value = words.solution[i];
+    setCharArray(){
+        var solution = localStorage.getItem('solution')
+        for(let i = 0; i < solution.length; i++){
+            let value = solution[i];
             this.total[value] += 1;
         }
     }
