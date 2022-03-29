@@ -68,7 +68,7 @@ header {
     font-size: 2rem;
     font-weight: bold;
     color: gainsboro;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,6 +103,10 @@ header {
   margin-right: 6px;
   border-radius: 4px;
   user-select: none;
+}
+
+#ß{
+  text-transform: lowercase
 }
 
 .keyboard-row button.wide-button {

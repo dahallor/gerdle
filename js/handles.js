@@ -86,7 +86,8 @@ class Handles {
 
         if(words.guessedWords.length === 6){
             localStorage.setItem('game progress', "lose")
-            window.alert(`Gesundheit. Das Wort war ${words.solution}`);
+            let solution = localStorage.getItem('solution')
+            window.alert(`Gesundheit. Das Wort war ${solution}`);
             throw "stop execution";
         }
         words.guessedWords.push([]);
@@ -110,6 +111,7 @@ class Handles {
     }
     handleInputClick(target, words, squares, keys, states, colors){
         const letter = target.getAttribute("data-key");
+        console.log(letter)
 
         if(letter === 'enter'){
             this.handleEnteredWord(words, squares, keys, states, colors);

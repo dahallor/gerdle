@@ -11,12 +11,10 @@ class Keyboard{
     }
 
     updateKeyboardStatesYellow(letter, states, color){
-        console.log(states.keyboardStates[letter])
         if(states.keyboardStates[letter] === color.red){
             return;
         }
         else{
-            console.log("yellow")
             states.keyboardStates[letter] = color.yellow;
             let currentColor = color.yellow
             this.updateLocalStorage(letter, currentColor)

@@ -103,8 +103,6 @@ class Squares {
 
             if(isLetterInWord && !isCorrectPosition){
                 this.tally[letter] += 1;
-                console.log(this.tally[letter])
-                console.log(this.total[letter])
                 if(this.tally[letter] <= this.total[letter]){
                     states.gameboardColorStates[index] = color.yellow;
                     keys.updateKeyboardStatesYellow(letter, states, color)
