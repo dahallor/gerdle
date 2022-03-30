@@ -1,6 +1,7 @@
 
 class Handles {
     constructor(){
+        this.status = "continue"
         
     }
 
@@ -15,15 +16,13 @@ class Handles {
             window.alert("Must be 27 characters");
             return;
         }
-        /*
-        Uncomment this part when finished debugging. Checks to make sure input is a real word
+        //Checks to make sure input is a real word. Comment out for easier debugging
 
-
-        if(!words.wordBank.includes(currentWordString)){
+        if(!words.wordBankLowercase.includes(currentWordString)){
             window.alert("Word Not In Word List")
             return;
-        }
-        */
+
+       }
 
 
 
@@ -31,16 +30,12 @@ class Handles {
 
         if(localStorage.getItem('refreshed') === 'false'){ 
             squares.resetStates(states, color);
-            squares.setColorStates(currentWord, words, keys, states, color);
-            console.log(squares.tally) 
-            console.log(squares.total)  
+            squares.setColorStates(currentWord, words, keys, states, color); 
             for(let index = 0; index < 27; index++){
                 setTimeout(() => {
                     const tileColor = squares.getTileColor(index, states);
                     const letterId = firstLetterId + index;
                     const letterElement = document.getElementById(letterId);
-                    //console.log(tileColor, letterId)
-                    //console.log(letterElement)
                     letterElement.classList.add("animate__flipInX");
                     letterElement.style = `background-color:${tileColor};boarder-color:${tileColor}`;
 
@@ -83,14 +78,42 @@ class Handles {
         if (currentWordString === localStorage.getItem('solution')){
             localStorage.setItem('game progress', "win")
             window.alert("Wunderbar!");
-            throw "stop execution";
+            let statsString = localStorage.getItem('stats')
+            let stats = JSON.parse(statsString)
+            stats["Total Games Played"] += 1
+            stats["Total Games Won"] += 1
+            if(words.guessedWordCount === 1){
+                stats["Won in 1 Guess"] += 1
+            }
+            if(words.guessedWordCount === 2){
+                stats["Won in 2 Guesses"] += 1
+            }
+            if(words.guessedWordCount === 3){
+                stats["Won in 3 Guesses"] += 1
+            }
+            if(words.guessedWordCount === 4){
+                stats["Won in 4 Guesses"] += 1
+            }
+            if(words.guessedWordCount === 5){
+                stats["Won in 5 Guesses"] += 1
+            }
+            if(words.guessedWordCount === 6){
+                stats["Won in 6 Guesses"] += 1
+            }
+            localStorage.setItem('stats', JSON.stringify(stats))
+            this.status = "halt"
         }
 
         if(words.guessedWords.length === 6){
             localStorage.setItem('game progress', "lose")
             let solution = localStorage.getItem('solution')
             window.alert(`Gesundheit. Das Wort war ${solution}`);
-            throw "stop execution";
+            let statsString = localStorage.getItem('stats')
+            let stats = JSON.parse(statsString)
+            stats["Total Games Played"] += 1
+            stats["Total Games Lost (Like a Loser)"] += 1
+            localStorage.setItem('stats', JSON.stringify(stats))
+            this.status = "halt"
         }
         words.guessedWords.push([]);
     }
@@ -112,35 +135,39 @@ class Handles {
 
     }
     handleInputClick(target, words, squares, keys, states, colors){
-        const letter = target.getAttribute("data-key");
+        if(this.status === "continue"){
+            const letter = target.getAttribute("data-key");
 
-        if(letter === 'enter'){
-            this.handleEnteredWord(words, squares, keys, states, colors);
-            return;
-        }
-        if(letter === 'del'){
-            this.handleDeletedLetter(words);
-            return;
-        }
+            if(letter === 'enter'){
+                this.handleEnteredWord(words, squares, keys, states, colors);
+                return;
+            }
+            if(letter === 'del'){
+                this.handleDeletedLetter(words);
+                return;
+            }
 
-        words.updateGuessedWord(letter);
+            words.updateGuessedWord(letter);
+        }
     }
 
     handleInputKeypress(key, words, squares, keys, states, colors){
-        if(key === 'Enter'){
-            this.handleEnteredWord(words, squares, keys, states, colors);
-            return;
-        }
-        if(key === 'Delete' || key === 'Backspace'){
-            this.handleDeletedLetter(words);
-            return;
-        }
-        let lower_letter = key.toLowerCase();
-        let test = words.charArray.includes(lower_letter);
-        if(test === false){
-            return;
-        }
+        if(this.status === "continue"){
+            if(key === 'Enter'){
+                this.handleEnteredWord(words, squares, keys, states, colors);
+                return;
+            }
+            if(key === 'Delete' || key === 'Backspace'){
+                this.handleDeletedLetter(words);
+                return;
+            }
+            let lower_letter = key.toLowerCase();
+            let test = words.charArray.includes(lower_letter);
+            if(test === false){
+                return;
+            }
 
-        words.updateGuessedWord(key);
+            words.updateGuessedWord(key);
+        }
     }
 }

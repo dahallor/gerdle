@@ -126,7 +126,7 @@ header {
     z-index: 1;
   }
 
-#help, #dictionary, #stats {
+#help, #dictionary, #stats, #settings {
   color: gainsboro;
   font-size: 1.5rem;
   cursor: pointer;

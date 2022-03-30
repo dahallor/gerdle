@@ -87,7 +87,6 @@ class Squares {
             var solution = localStorage.getItem("solution")
             const letterPosition = solution.charAt(index);
             const isCorrectPosition = (letter === letterPosition);
-            console.log(solution, letterPosition, isCorrectPosition, this.tally[letter])
             if(isCorrectPosition){
                 this.tally[letter] += 1;
                 states.gameboardColorStates[index] = color.red;
@@ -101,12 +100,8 @@ class Squares {
             const letterPosition = solution.charAt(index);
             const isCorrectPosition = (letter === letterPosition);
             const isLetterInWord = solution.includes(letter);
-            console.log(letter, letterPosition, isCorrectPosition, isLetterInWord)
-            console.log(this.tally[letter])
-            console.log(this.total[letter])
 
             if(isLetterInWord && !isCorrectPosition){
-                console.log("in yellow conditional")
                 this.tally[letter] += 1;
                 if(this.tally[letter] <= this.total[letter]){
                     states.gameboardColorStates[index] = color.yellow;

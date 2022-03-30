@@ -23,7 +23,23 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.outer_modal.style = `background: rgba(0, 0, 0, .5);z-index: 2;`;
         modal.gameBoard.style = `opacity: 0;`;
         modal.inner_modal.style = `background: rgba(217, 217, 214, 1);z-index:3;`;
-        modal.modal_content.innerHTML = modal.statsText;
+        let settingsStored = JSON.parse(localStorage.getItem('stats'))
+        var list = document.getElementById("word-ul")
+        for(let i = 0; i < 18; i += 2){
+            let li = document.createElement('li');
+            let string = String(modal.statsText[i]) + String(modal.statsText[i+1])
+            li.appendChild(document.createTextNode(string));
+            list.appendChild(li);
+            }
+    });
+
+    modal.settings.addEventListener("click", () => {
+        modal.outer_modal.style = `background: rgba(0, 0, 0, .5);z-index: 2;`;
+        modal.gameBoard.style = `opacity: 0;`;
+        modal.inner_modal.style = `background: rgba(217, 217, 214, 1);z-index:3;`;
+        modal.modal_content.innerHTML = modal.settingsText;
+
+            
     });
 
 
@@ -44,10 +60,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 for(let j = 0; j < 27; j++){
                     let currentLetter = currentItem.charAt(j)
                     let currentLetterLower = currentLetter.toLowerCase()
-                    console.log(currentLetterLower)
                     handles.handleInputKeypress(currentLetterLower, words, squares, keys, states, color)
                     
                 }
+                modal.outer_modal.style = `background: "rgba(0, 0, 0, 0);z-index: 0;`;
+                modal.inner_modal.style = `background: rgba(217, 217, 214, 0);z-index:0;`;
+                modal.gameBoard.style = `opacity: 1;`
+                modal.modal_content.innerHTML = `<div id = "word-bank"><ul id = "word-ul"></ul></div>`;
             })
         }
     });
@@ -76,6 +95,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function setInitialLocalStorage(words, squares, keys, states, color){
+        words.setLowercase()
+        if(!localStorage.getItem('stats')){
+            localStorage.setItem('stats', JSON.stringify({"Total Games Played": 0,
+            "Total Games Won": 0,
+            "Total Games Lost (Like a Loser)": 0,
+            "Won in 1 Guess": 0,
+            "Won in 2 Guesses": 0,
+            "Won in 3 Guesses": 0,
+            "Won in 4 Guesses": 0,
+            "Won in 5 Guesses": 0,
+            "Won in 6 Guesses": 0,  
+            }));
+        }
         if(!localStorage.getItem('game progress') || localStorage.getItem('game progress') === "win" || localStorage.getItem('game progress') === "lose"){
             localStorage.setItem('refreshed', false)
             localStorage.setItem('gameboard state all', JSON.stringify(states.gameboardColorStatesAll))
