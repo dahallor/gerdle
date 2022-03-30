@@ -39,6 +39,17 @@ document.addEventListener("DOMContentLoaded", () => {
             li.appendChild(document.createTextNode(modal.dictText[i]));
             list.appendChild(li);
             }
+        let item = document.getElementsByTagName('li');
+        for(let i = 0; i < item.length; i ++){
+            let currentItem = item[i].innerHTML
+            item[i].addEventListener("click", ()=> {
+                for(let j = 0; j <= 27; j++){
+                    let currentLetter = currentItem.charAt(j)
+                    handles.handleInputKeypress(currentLetter, words, squares, keys, states, color)
+                    
+                }
+            })
+        }
     });
 
     modal.x.addEventListener("click", () => {

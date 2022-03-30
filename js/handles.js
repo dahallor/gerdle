@@ -111,7 +111,6 @@ class Handles {
     }
     handleInputClick(target, words, squares, keys, states, colors){
         const letter = target.getAttribute("data-key");
-        console.log(letter)
 
         if(letter === 'enter'){
             this.handleEnteredWord(words, squares, keys, states, colors);
