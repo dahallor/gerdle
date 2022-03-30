@@ -87,8 +87,8 @@ class Squares {
             var solution = localStorage.getItem("solution")
             const letterPosition = solution.charAt(index);
             const isCorrectPosition = (letter === letterPosition);
+            console.log(solution, letterPosition, isCorrectPosition, this.tally[letter])
             if(isCorrectPosition){
-
                 this.tally[letter] += 1;
                 states.gameboardColorStates[index] = color.red;
                 keys.updateKeyboardStatesRed(letter, states, color)
@@ -97,22 +97,24 @@ class Squares {
         });
         //distribute remainder
         currentWord.forEach((letter, index) => {
-            const letterPosition = words.solution.charAt(index);
+            var solution = localStorage.getItem("solution")
+            const letterPosition = solution.charAt(index);
             const isCorrectPosition = (letter === letterPosition);
-            const isLetterInWord = words.solution.includes(letter);
+            const isLetterInWord = solution.includes(letter);
+            console.log(letter, letterPosition, isCorrectPosition, isLetterInWord)
+            console.log(this.tally[letter])
+            console.log(this.total[letter])
 
             if(isLetterInWord && !isCorrectPosition){
+                console.log("in yellow conditional")
                 this.tally[letter] += 1;
                 if(this.tally[letter] <= this.total[letter]){
                     states.gameboardColorStates[index] = color.yellow;
-                    keys.updateKeyboardStatesYellow(letter, states, color)
-                    
+                    keys.updateKeyboardStatesYellow(letter, states, color) 
                 }
             }
             if(!isLetterInWord){
-                
                 keys.updateKeyboardStatesBlack(letter, states, color)
-                
             }
         });
         keys.updateKeyboard(words, states);

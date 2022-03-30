@@ -31,7 +31,9 @@ class Handles {
 
         if(localStorage.getItem('refreshed') === 'false'){ 
             squares.resetStates(states, color);
-            squares.setColorStates(currentWord, words, keys, states, color);  
+            squares.setColorStates(currentWord, words, keys, states, color);
+            console.log(squares.tally) 
+            console.log(squares.total)  
             for(let index = 0; index < 27; index++){
                 setTimeout(() => {
                     const tileColor = squares.getTileColor(index, states);

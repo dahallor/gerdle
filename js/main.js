@@ -10,8 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     squares.createSquares();
     setInitialLocalStorage(words, squares, keys, states, color);
-    squares.setCharArray();
-
 
     //set modal event listners
     modal.help.addEventListener("click", () => {
@@ -43,9 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
         for(let i = 0; i < item.length; i ++){
             let currentItem = item[i].innerHTML
             item[i].addEventListener("click", ()=> {
-                for(let j = 0; j <= 27; j++){
+                for(let j = 0; j < 27; j++){
                     let currentLetter = currentItem.charAt(j)
-                    handles.handleInputKeypress(currentLetter, words, squares, keys, states, color)
+                    let currentLetterLower = currentLetter.toLowerCase()
+                    console.log(currentLetterLower)
+                    handles.handleInputKeypress(currentLetterLower, words, squares, keys, states, color)
                     
                 }
             })
@@ -81,12 +81,14 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem('gameboard state all', JSON.stringify(states.gameboardColorStatesAll))
             localStorage.setItem('keyboard state', JSON.stringify(states.keyboardStates))
             words.setSolution();
+            squares.setCharArray();
         }
         if(localStorage.getItem('game progress') === 'in progress'){
             localStorage.setItem('refreshed', true)
             const storedGuesses = localStorage.getItem('guesses')
             const storedGuessesArray = JSON.parse(storedGuesses)
             let count = 0;
+            squares.setCharArray();
             for(let i = 0; i < 6; i++){
                 if(storedGuessesArray[i] !== ""){
                     count += 1;
