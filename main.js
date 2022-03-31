@@ -23,11 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.outer_modal.style = `background: rgba(0, 0, 0, .5);z-index: 2;`;
         modal.gameBoard.style = `opacity: 0;`;
         modal.inner_modal.style = `background: rgba(217, 217, 214, 1);z-index:3;`;
-        let settingsStored = JSON.parse(localStorage.getItem('stats'))
+        var statsText = modal.setStats();
         var list = document.getElementById("word-ul")
         for(let i = 0; i < 18; i += 2){
             let li = document.createElement('li');
-            let string = String(modal.statsText[i]) + String(modal.statsText[i+1])
+            let string = String(statsText[i]) + String(statsText[i+1])
             li.appendChild(document.createTextNode(string));
             list.appendChild(li);
             }

@@ -18,21 +18,26 @@ class Modals{
         And that's about it! Go forth and play a gratitously difficult version of Wordle!<br><br>
         
         *Note: some browsers seem to have issues with typing. If this happens try selecting a key by mouse click and then start typing*</p>`
-        this.statsArray = JSON.parse(localStorage.getItem('stats'));
-        /*this.statsText = ["Total Games Played:", this.statsArray["Total Games Played"], 
-        "Total Games Won:", this.statsArray["Total Games Won"], 
-        "Total Games Lost (Like A Loser):", this.statsArray["Total Games Lost (Like a Loser)"],
-        "Won in 1 Guess:", this.statsArray["Won in 1 Guess"], 
-        "Won in 2 Guesses:", this.statsArray["Won in 2 Guesses"],
-        "Won in 3 Guesses:", this.statsArray["Won in 3 Guesses"],
-        "Won in 4 Guesses:", this.statsArray["Won in 4 Guesses"],
-        "Won in 5 Guesses:", this.statsArray["Won in 5 Guesses"],
-        "Won in 6 Guesses:", this.statsArray["Won in 6 Guesses"]]*/
+
 
         this.dictText = words.wordBank;
         this.settingText = `<ul><li>Unlimited Mode (Current Mode)</li><li>Traditional Mode (Coming Soon)</li></ul>`
     }
 
+    setStats(){
+        var statsArray = JSON.parse(localStorage.getItem('stats'));
+        var statsText = ["Total Games Played:", statsArray["Total Games Played"], 
+        "Total Games Won:", statsArray["Total Games Won"], 
+        "Total Games Lost (Like A Loser):", statsArray["Total Games Lost (Like a Loser)"],
+        "Won in 1 Guess:", statsArray["Won in 1 Guess"], 
+        "Won in 2 Guesses:", statsArray["Won in 2 Guesses"],
+        "Won in 3 Guesses:", statsArray["Won in 3 Guesses"],
+        "Won in 4 Guesses:", statsArray["Won in 4 Guesses"],
+        "Won in 5 Guesses:", statsArray["Won in 5 Guesses"],
+        "Won in 6 Guesses:", statsArray["Won in 6 Guesses"]]
+
+        return statsText;
+    }
 
 
 }
