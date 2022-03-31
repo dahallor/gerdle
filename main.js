@@ -43,12 +43,12 @@ document.addEventListener("DOMContentLoaded", () => {
         
         let li1 = document.createElement('li');
         var string1 = "Unlimited Mode (Current Mode)"
-        li.appendChild(document.createTextNode(string1));
+        li1.appendChild(document.createTextNode(string1));
         list.appendChild(li1);
 
         let li2 = document.createElement('li');
         var string2 = "Traditional Mode (Coming Soon)"
-        li.appendChild(document.createTextNode(string2));
+        li2.appendChild(document.createTextNode(string2));
         list.appendChild(li2);
             
 
