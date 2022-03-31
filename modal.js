@@ -19,7 +19,7 @@ class Modals{
         
         *Note: some browsers seem to have issues with typing. If this happens try selecting a key by mouse click and then start typing*</p>`
         this.statsArray = JSON.parse(localStorage.getItem('stats'));
-        this.statsText = ["Total Games Played:", this.statsArray["Total Games Played"], 
+        /*this.statsText = ["Total Games Played:", this.statsArray["Total Games Played"], 
         "Total Games Won:", this.statsArray["Total Games Won"], 
         "Total Games Lost (Like A Loser):", this.statsArray["Total Games Lost (Like a Loser)"],
         "Won in 1 Guess:", this.statsArray["Won in 1 Guess"], 
@@ -27,7 +27,7 @@ class Modals{
         "Won in 3 Guesses:", this.statsArray["Won in 3 Guesses"],
         "Won in 4 Guesses:", this.statsArray["Won in 4 Guesses"],
         "Won in 5 Guesses:", this.statsArray["Won in 5 Guesses"],
-        "Won in 6 Guesses:", this.statsArray["Won in 6 Guesses"]]
+        "Won in 6 Guesses:", this.statsArray["Won in 6 Guesses"]]*/
 
         this.dictText = words.wordBank;
         this.settingText = `<ul><li>Unlimited Mode (Current Mode)</li><li>Traditional Mode (Coming Soon)</li></ul>`
