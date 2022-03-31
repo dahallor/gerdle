@@ -21,7 +21,7 @@ class Modals{
 
 
         this.dictText = words.wordBank;
-        this.settingText = `<ul><li>Unlimited Mode (Current Mode)</li><li>Traditional Mode (Coming Soon)</li></ul>`
+        
     }
 
     setStats(){

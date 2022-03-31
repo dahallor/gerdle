@@ -39,7 +39,18 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.outer_modal.style = `background: rgba(0, 0, 0, .5);z-index: 2;`;
         modal.gameBoard.style = `opacity: 0;`;
         modal.inner_modal.style = `background: rgba(217, 217, 214, 1);z-index:3;`;
-        modal.modal_content.innerHTML = modal.settingsText;
+        var list = document.getElementById("word-ul")
+        
+        let li1 = document.createElement('li');
+        var string1 = "Unlimited Mode (Current Mode)"
+        li.appendChild(document.createTextNode(string1));
+        list.appendChild(li1);
+
+        let li2 = document.createElement('li');
+        var string2 = "Traditional Mode (Coming Soon)"
+        li.appendChild(document.createTextNode(string2));
+        list.appendChild(li2);
+            
 
             
     });
