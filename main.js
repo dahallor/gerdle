@@ -27,7 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
         var list = document.getElementById("word-ul")
         for(let i = 0; i < 18; i += 2){
             let li = document.createElement('li');
-            let string = String(statsText[i]) + String(statsText[i+1])
+            var string1 = String(statsText[i])
+            var string2 = String(statsText[i+1])
+            let string = `${string1} ${string2}`
             li.appendChild(document.createTextNode(string));
             list.appendChild(li);
             }
