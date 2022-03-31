@@ -102,6 +102,7 @@ class Handles {
             }
             localStorage.setItem('stats', JSON.stringify(stats))
             this.status = "halt"
+            return;
         }
 
         if(words.guessedWords.length === 6){
@@ -114,6 +115,7 @@ class Handles {
             stats["Total Games Lost (Like a Loser)"] += 1
             localStorage.setItem('stats', JSON.stringify(stats))
             this.status = "halt"
+            return;
         }
         words.guessedWords.push([]);
     }
