@@ -12,8 +12,6 @@ html, body {
     display: flex;
     background-color: black;
     height: 100%;
-    align-items: center;
-    flex-direction: column;
 }
 
 header {
@@ -45,30 +43,28 @@ header {
     justify-content: center;
     align-items: center;
     flex-grow: 1;
-    overflow: auto;
     opacity: 1;
     z-index: 1;
 }
 
 #board{
     display: grid;
-    justify-content: center;
-    align-items: center;
     grid-template-columns: repeat(27, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     grid-gap: 5px;
     padding: 10px;
-    box-sizing: border-box;
+    overflow: auto;
 }
 
 
 .square {
+    position: relative;
     border: 2px solid rgb(58, 58, 60);
-    width: 30px;
-    height: 30px;
+    min-width: 35px;
+    min-height: 35px;
     font-size: 2rem;
     font-weight: bold;
     color: gainsboro;
-    /*text-transform: uppercase;*/
     display: flex;
     justify-content: center;
     align-items: center;
