@@ -12,9 +12,11 @@ class Modals{
         this.gameBoard = document.getElementById("board-container");
         this.helpText = `<p>Welcome to Gerdle! Similair to the Wordle game you all know and love but with a few twists!<br><br>
         
-        First off, instead of 6 guess to figure out a 5 letter english word, you have 6 guesses to figure out a 27 letter german word! Don't speak German? Well, neither do I. So if you need to know what words are accepted, click the 'list' icon in the upper left to bring a dropdown of potential words. For ease, the words in the word list are clickable. Click on a word and it will be autoloaded in the game board for you to submit if you wish<br><br>
+        First off, instead of 6 guesses to figure out a 5 letter english word, you have 6 guesses to figure out a 27 letter german word! Don't speak German? Well, neither do I! So if you need to know what words are accepted, click the 'list' icon in the upper left to bring a dropdown of potential words. For ease, the words in the word list are clickable. Click on a word and it will be autoloaded in the game board for you to submit if you wish<br><br>
         
-        Secondly, the color scheme is changed. Instead of gray for a letter not in the word, gold for a letter in the wrong place, and green for correct place; it is now black for letter not in word, yellow for wrong place but in word, and red for letter in correct place. Why these colors? Cause it's the german flag silly!<br><br>
+        Secondly, the color scheme is changed. Instead of gray for a letter not in the word, gold for a letter in the wrong place, and green for correct place; it is now black for the letter not in word, yellow for letter in the wrong place but in the word, and red for the letter in the correct place. Why these colors? Cause it's the german flag silly!<br><br>
+        
+        Finally, Click on the nodes icon when you complete your game to copy a summary of your game to the clipboard for you to share with your friends.<br><br>
         
         And that's about it! Go forth and play a gratitously difficult version of Wordle!<br><br>
         
