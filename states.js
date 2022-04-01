@@ -83,18 +83,13 @@ class States {
 
         for(let i = 0; i < 27; i++){
             let state = states[words.guessedWordCount][i]
-            console.log(words.guessedWordCount, state)
-            console.log(colors.black, colors.yellow, colors.red)
             if(state === colors.gray){
-                console.log("black")
                 emojiArray.push(colors.blackSquare)
             }
             if(state === colors.yellow){
-                console.log("yellow")
                 emojiArray.push(colors.yellowSquare)
             }
             if(state === colors.red){
-                console.log("red")
                 emojiArray.push(colors.redSquare)
             }
         }

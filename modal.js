@@ -42,20 +42,38 @@ class Modals{
     }
 
     getShareText(words){
-        let emojis = localStorage.getItem('emojis')
+        let emojisString = localStorage.getItem('emojis')
+        let emojisArray = JSON.parse(emojisString)
+        let emojis = ""
+        console.log(emojisArray)
+        console.log(emojisArray)
+
+        for(let i = 0; i < emojisArray.length; i++){
+            for(let j = 0; j <= 27; j++){
+                if(j == 27){
+                    emojis += "\n\n"
+                }
+                else{
+                    emojis += String(emojisArray[i][j])
+                    console.log(String(emojisArray[i][j]))
+                }
+            }
+        }
         let word = localStorage.getItem('solution')
         let guesses = words.guessedWordCount
-        if(localStorage.getItem('progress') === "win"){
-            var shareTextValidWin = `<p>I just won a round of Gerdle unlimited mode! My word was` + word + `<br><br>` 
-            + guesses + `/6<br><br>`
-            + emojis + `<br><br>
-            https://dahallor.github.io/gerdle</p>`
+        if(localStorage.getItem('game progress') === "win"){
+            var shareTextValidWin = "Gerdle unlimited mode - My word was: " + word + 
+            "\n\n"
+            + guesses + "/6\n\n"
+            + emojis + 
+            "\n\nhttps://dahallor.github.io/gerdle"
             return shareTextValidWin
         }
-        if(localStorage.getItem('progress') === "lose"){
-            var shareTextValidLose = `<p>I just failed a round of Gerdle unlimited mode (because I am a loser). My word was` + word + `<br><br>` 
-            + emojis + `<br><br>
-            https://dahallor.github.io/gerdle</p>`
+        if(localStorage.getItem('game progress') === "lose"){
+            var shareTextValidLose = "Gerdle unlimited mode - My word was: " + word + 
+            "\n\nX/6\n\n"
+            + emojis + 
+            "\n\nhttps://dahallor.github.io/gerdle"
             return shareTextValidLose
         }
     }

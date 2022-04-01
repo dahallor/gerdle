@@ -26,15 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
             modal.inner_modal.style = `background: rgba(217, 217, 214, 1);z-index:3;`;
             modal.modal_content.innerHTML = `<p>Complete your game first! Then click this icon to copy your results to clipbpard.</p>`
         }
+
         else{
             window.alert("Copied to Clipboard")
-            if(localStorage.getItem('game progress') === 'win'){
-
-            }
-            if(localStorage.getItem('game progress') === 'lose'){
-
-            }
-            
+            var shareText = modal.getShareText(words);
+            window.navigator.clipboard.writeText(shareText)
         }
 
     });
