@@ -122,7 +122,7 @@ header {
     z-index: 1;
   }
 
-#help, #dictionary, #stats, #settings {
+#help, #dictionary, #stats, #settings, #share {
   color: gainsboro;
   font-size: 1.5rem;
   cursor: pointer;

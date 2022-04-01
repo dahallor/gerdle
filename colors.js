@@ -5,5 +5,9 @@ class Colors {
         this.lightGray = "rgb(129, 131, 132)";
         this.yellow = "rgb(255, 205, 0)";
         this.red = "rgb(218, 41, 28)";
+        this.blackSquare = "⬛";
+        this.yellowSquare = "🟨";
+        this.redSquare = "🟥";
+        this.whiteSquare = "⬜";
     }
 }

@@ -7,6 +7,7 @@ class Modals{
         this.help = document.getElementById("help");
         this.stats = document.getElementById("stats");
         this.settings = document.getElementById("settings");
+        this.share = document.getElementById("share");
         this.x = document.getElementById("close-x");
         this.gameBoard = document.getElementById("board-container");
         this.helpText = `<p>Welcome to Gerdle! Similair to the Wordle game you all know and love but with a few twists!<br><br>
@@ -21,7 +22,8 @@ class Modals{
 
 
         this.dictText = words.wordBank;
-        
+
+
     }
 
     setStats(){
@@ -37,6 +39,25 @@ class Modals{
         "Won in 6 Guesses:", statsArray["Won in 6 Guesses"]]
 
         return statsText;
+    }
+
+    getShareText(words){
+        let emojis = localStorage.getItem('emojis')
+        let word = localStorage.getItem('solution')
+        let guesses = words.guessedWordCount
+        if(localStorage.getItem('progress') === "win"){
+            var shareTextValidWin = `<p>I just won a round of Gerdle unlimited mode! My word was` + word + `<br><br>` 
+            + guesses + `/6<br><br>`
+            + emojis + `<br><br>
+            https://dahallor.github.io/gerdle</p>`
+            return shareTextValidWin
+        }
+        if(localStorage.getItem('progress') === "lose"){
+            var shareTextValidLose = `<p>I just failed a round of Gerdle unlimited mode (because I am a loser). My word was` + word + `<br><br>` 
+            + emojis + `<br><br>
+            https://dahallor.github.io/gerdle</p>`
+            return shareTextValidLose
+        }
     }
 
 

@@ -19,6 +19,26 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.modal_content.innerHTML = modal.helpText;
     });
 
+    modal.share.addEventListener("click", () => {
+        if(localStorage.getItem('game progress') === 'in progress'){
+            modal.outer_modal.style = `background: rgba(0, 0, 0, .5);z-index: 2;`;
+            modal.gameBoard.style = `opacity: 0;`;
+            modal.inner_modal.style = `background: rgba(217, 217, 214, 1);z-index:3;`;
+            modal.modal_content.innerHTML = `<p>Complete your game first! Then click this icon to copy your results to clipbpard.</p>`
+        }
+        else{
+            window.alert("Copied to Clipboard")
+            if(localStorage.getItem('game progress') === 'win'){
+
+            }
+            if(localStorage.getItem('game progress') === 'lose'){
+
+            }
+            
+        }
+
+    });
+
     modal.stats.addEventListener("click", () => {
         modal.outer_modal.style = `background: rgba(0, 0, 0, .5);z-index: 2;`;
         modal.gameBoard.style = `opacity: 0;`;
@@ -122,6 +142,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }));
         }
         if(!localStorage.getItem('game progress') || localStorage.getItem('game progress') === "win" || localStorage.getItem('game progress') === "lose"){
+            localStorage.setItem('game progress', 'in progress')
+            localStorage.setItem('emojis', "[]")
             localStorage.setItem('refreshed', false)
             localStorage.setItem('gameboard state all', JSON.stringify(states.gameboardColorStatesAll))
             localStorage.setItem('keyboard state', JSON.stringify(states.keyboardStates))

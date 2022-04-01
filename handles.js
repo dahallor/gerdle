@@ -41,6 +41,7 @@ class Handles {
 
                 }, timeInterval * index);
             };
+            states.setEmojis(color, words)
 
         };
         if(localStorage.getItem('refreshed') === 'true'){
@@ -72,7 +73,7 @@ class Handles {
         squares.resetTally(words);
         states.setGuesses(words)
         words.guessedWordCount += 1;
-        localStorage.setItem('game progress', "in progress")
+        //localStorage.setItem('game progress', "in progress")
 
         //Endgame Messages
         if (currentWordString === localStorage.getItem('solution')){
