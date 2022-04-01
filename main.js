@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
             handles.handleInputKeypress(e.key, words, squares, keys, states, color);
         })
         letters[i].addEventListener("click", e => {
-            if(e.detail >= 1){
+            if(e.detail >= 1 && e.target.innerText !== "Q\nW\nE\nR\nT\nZ\nU\nI\nO\nP\nÜ\nß" && e.target.innerText !== "A\nS\nD\nF\nG\nH\nJ\nK\nL\nÖ\nÄ" && e.target.innerText !== "ENTER\nY\nX\nC\nV\nB\nN\nM\nDEL" && e.target.innerText !== ""){
                 handles.handleInputClick(e.target, words, squares, keys, states, color);
             }
         })

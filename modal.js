@@ -45,8 +45,6 @@ class Modals{
         let emojisString = localStorage.getItem('emojis')
         let emojisArray = JSON.parse(emojisString)
         let emojis = ""
-        console.log(emojisArray)
-        console.log(emojisArray)
 
         for(let i = 0; i < emojisArray.length; i++){
             for(let j = 0; j <= 27; j++){
@@ -55,7 +53,6 @@ class Modals{
                 }
                 else{
                     emojis += String(emojisArray[i][j])
-                    console.log(String(emojisArray[i][j]))
                 }
             }
         }
