@@ -11,6 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
     squares.createSquares();
     setInitialLocalStorage(words, squares, keys, states, color);
 
+    if(!localStorage.getItem('first time')){
+        localStorage.setItem('first time', "false")
+        modal.outer_modal.style = `background: rgba(0, 0, 0, .5);z-index: 2;`;
+        modal.gameBoard.style = `opacity: 0;`;
+        modal.inner_modal.style = `background: rgba(217, 217, 214, 1);z-index:3;`;
+        modal.modal_content.innerHTML = modal.helpText;
+    }
+
     //set modal event listners
     modal.help.addEventListener("click", () => {
         modal.outer_modal.style = `background: rgba(0, 0, 0, .5);z-index: 2;`;

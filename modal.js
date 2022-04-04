@@ -12,11 +12,21 @@ class Modals{
         this.gameBoard = document.getElementById("board-container");
         this.helpText = `<p>Welcome to Gerdle! Similair to the Wordle game you all know and love but with a few twists!<br><br>
         
-        First off, instead of 6 guesses to figure out a 5 letter english word, you have 6 guesses to figure out a 27 letter german word! Don't speak German? Well, neither do I! So if you need to know what words are accepted, click the 'list' icon in the upper left to bring a dropdown of potential words. For ease, the words in the word list are clickable. Click on a word and it will be autoloaded in the game board for you to submit if you wish<br><br>
+        First off, let's show you the way around:<br><br>
+
+        >Question Mark Icon: Help Menu. Brings this message up<br>
+        >List Icon: Word list. Click on a word to auto import it into the squares (no need to type them out if you don't want to!)<br>
+        >Bar Chart Icon: Stats page. Click here to see a record of your wins and loses<br>
+        >Gear Icon: Settings Menu. Let's you toggle game modes<br>
+        >Nodes Icon: Share feature. Upon completion of a round; click this to copy an emoji representation of your game to the clip board, a la the original Wordle. Paste into your social media feeds to show your friends!<br><br>
         
-        Secondly, the color scheme is changed. Instead of gray for a letter not in the word, gold for a letter in the wrong place, and green for correct place; it is now black for the letter not in word, yellow for letter in the wrong place but in the word, and red for the letter in the correct place. Why these colors? Cause it's the german flag silly!<br><br>
         
-        Finally, Click on the nodes icon when you complete your game to copy a summary of your game to the clipboard for you to share with your friends.<br><br>
+        Secondly, the (minor) gameplay changes:<br><br>
+        
+        >Instead of 6 guesses to figure out a 5 letter english word, you have 6 guesses to figure out a 27 letter german word! <br>
+        >>>Why such long words? I don't know, I just thought it'd be funny.<br>
+        >The color scheme is changed. Instead of gray, gold, and green for not in word, in word but wrong place, and in word respectively; It is now black, yellow, and red for the same criteria.><br>
+        >>>Why these colors? Because they're the German Flag silly goose!<br><br>
         
         And that's about it! Go forth and play a gratitously difficult version of Wordle!<br><br>
         
