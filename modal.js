@@ -3,6 +3,7 @@ class Modals{
         this.outer_modal = document.getElementById("modal");
         this.inner_modal = document.getElementById("modal__inner");
         this.modal_content = document.getElementById("modal__content");
+        this.modal_top = document.getElementById("modal__top");
         this.dict = document.getElementById("dictionary");
         this.help = document.getElementById("help");
         this.stats = document.getElementById("stats");

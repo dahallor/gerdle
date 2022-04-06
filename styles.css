@@ -135,7 +135,8 @@ header {
   font-size: 1.5rem;
   
 }
-/*
+
+
 .modal {
   --gap: 15px;
   position: fixed;
@@ -154,20 +155,18 @@ header {
 
 .modal__inner {
   background: rgba(217, 217, 214, 0);
+  position: fixed;
+  overflow: auto;
   max-width: 80%;
   max-height: 80%;
-  overflow-x: auto;
-  overflow-y: auto;
   border-radius: 4px;
   z-index: 0
 
 }
 
 .modal__top{
-  max-width: 80%;
-  max-height: 80%;
-  position: relative;
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: right;
   cursor: pointer;
@@ -178,12 +177,8 @@ header {
 
 .modal__content{
   padding: 0 var(--gap);
-  overflow-y: auto;
-  max-width: 800px;
-  max-height: 700px;
-
 }
-*/
+
 li{
   display: flex;
   cursor: pointer
